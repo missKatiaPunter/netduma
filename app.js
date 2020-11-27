@@ -52,7 +52,6 @@ const checkRequired = arrayOfNodes => {
 
 //Format check for the phone number
 const checkPhoneNum = tel => {
-    console.log(tel.value)
     if (isValidPhoneNum(tel.value)) {
         showSuccess(tel);
     } else {
@@ -103,5 +102,6 @@ function updateLocalStorage() {
 const addContactToDOM = contact => {
 
 }
+
 form.addEventListener('input', checkValid);
 form.addEventListener('submit', addNewContact);

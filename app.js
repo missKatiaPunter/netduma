@@ -13,9 +13,9 @@ const localStorageContacts = JSON.parse(localStorage.getItem('contacts'));
 
 let contacts = localStorage.getItem('contacts') !== null ? localStorageContacts : [];
 
-contacts.forEach(item => {
+contacts.forEach(contact => {
     const li = document.createElement('li');
-    li.appendChild(document.createTextNode(`${item.firstName}: ${item.email}`));
+    li.appendChild(document.createTextNode(formatAddr(contact)));
     const text = document.createElement('p');
     li.appendChild(text);
     list.appendChild(li);

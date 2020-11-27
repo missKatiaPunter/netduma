@@ -8,6 +8,7 @@ const street = document.getElementById('street');
 const town = document.getElementById('town');
 const country = document.getElementById('country');
 const list = document.getElementById('list');
+const bt = document.getElementById('btn');
 
 const localStorageContacts = JSON.parse(localStorage.getItem('contacts'));
 
@@ -24,7 +25,6 @@ contacts.forEach(contact => {
 
 //Outlines the input box red and shows an error message if it does not pass checks
 const showError = (input, message) => {
-    console.log(message);
     const formControl = input.parentElement;
     formControl.className = 'form-field error';
     const small = formControl.querySelector('small');
@@ -42,13 +42,15 @@ const checkRequired = arrayOfNodes => {
     arrayOfNodes.forEach(input => {
         if (input.value.trim() === '') {
             showError(input, "Required");
+            return false;
         } else {
             showSuccess(input);
+            return true;
         }
     });
 }
 
-//Format check for phone number validation
+//Format check for the phone number
 const checkPhoneNum = tel => {
     console.log(tel.value)
     if (isValidPhoneNum(tel.value)) {
@@ -58,10 +60,15 @@ const checkPhoneNum = tel => {
     }
 }
 
-const addNewContact = e => {
+const checkValid = e => {
     e.preventDefault();
     checkRequired([firstName, secondName, email, telephone, street, town, country]);
     checkPhoneNum(telephone);
+    bt.disabled = false;
+}
+
+const addNewContact = e => {
+    e.preventDefault();
     const contact = {
         firstName: firstName.value,
         otherNames: otherNames.value,
@@ -73,6 +80,7 @@ const addNewContact = e => {
         country: country.value
     };
     contacts.push(contact);
+    
     //   addContactToDOM(contact);
     updateLocalStorage();
     console.log(localStorage);
@@ -95,5 +103,5 @@ function updateLocalStorage() {
 const addContactToDOM = contact => {
 
 }
-
+form.addEventListener('input', checkValid);
 form.addEventListener('submit', addNewContact);

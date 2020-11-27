@@ -91,3 +91,20 @@ h2 {
     margin-top: 20px;
     width: 100%;
 }
+
+input::placeholder {
+    color: #D3D3D3;
+}
+
+.form-control input:focus {
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control.success input {
+    border-color: var(--success-color);
+}
+
+.form-control.error input {
+    border-color: var(--error-color);
+}

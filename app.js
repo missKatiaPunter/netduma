@@ -52,9 +52,9 @@ const checkRequired = arrayOfNodes => {
 const checkPhoneNum = tel => {
     console.log(tel.value)
     if (isValidPhoneNum(tel.value)) {
-        showError(tel, "Incorrect phone format");
-    } else {
         showSuccess(tel);
+    } else {
+        showError(tel, "Incorrect phone format");
     }
 }
 

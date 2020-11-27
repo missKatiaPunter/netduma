@@ -96,15 +96,27 @@ input::placeholder {
     color: #D3D3D3;
 }
 
-.form-control input:focus {
+.form-field input:focus {
     outline: 0;
     border-color: #777;
 }
 
-.form-control.success input {
+.form-field.success input {
     border-color: var(--success-color);
 }
 
-.form-control.error input {
+.form-field.error input {
     border-color: var(--error-color);
 }
+
+.form-field small {
+    color: var(--error-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+  }
+  
+  .form-field.error small {
+    visibility: visible;
+  }
